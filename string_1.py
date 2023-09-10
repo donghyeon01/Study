@@ -1,13 +1,24 @@
-<!DOCTYPE html>
+#!D:/CodingPrograms/Python311/python
+print("Content-Type: text/html")
+print()
+import sys
+import codecs
+
+# stdout의 인코딩을 UTF-8로 강제 변환한다
+sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
+import cgi
+form = cgi.FieldStorage()
+pageId = form["id"].value
+print('''<!DOCTYPE html>
 <html>
 <head>
     <title>문자열 정리</title>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
 </head>
 <body>
     <h1><a href="index.html">메인</a></h1>
     <h3><a href="python.html">돌아가기</a></h3>
-    <h2>문자열 관련 내용</h2>
+    <h2>{title}</h2>
     <ul>
       <pre>파이썬에서 문자
         " "사이에 있는 내용들이 문자로 취급된다.
@@ -31,3 +42,4 @@
     </ul>
 </body>
 </html>
+'''.format(title=pageId))
