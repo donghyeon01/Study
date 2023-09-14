@@ -1,0 +1,28 @@
+
+    *{
+      margin: 0;
+    }
+    a{
+      text-decoration: none;
+    }
+    .main{
+      text-align: center;
+      font-size: 45px;
+      color: black;
+      padding-top: 0.5%;
+      padding-bottom: 0.5%;
+    }
+    .index{
+      float: left;
+      padding-top: 1%;
+      padding-right: 1%;
+      padding-bottom: 100%;
+      border-right: 1px solid;
+    }
+    .content{
+      padding-top: 1%;
+      padding-left: 10%;
+    }
+    .right{
+      float: right;
+    }
