@@ -20,4 +20,5 @@
                 format을 통해 값을 받아와 제목과 내용(open(read)사용/encoding='utf-8'을 작성하여 
                 cp949' codec can't decode 오류를 해결)을 작성.
                 +list
+2023-09-15 : 컨테이너들 (list, dictionary, set(=집합 :중복값은 들어가지 못함))
 </pre>
