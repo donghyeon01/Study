@@ -6,14 +6,25 @@ import codecs
 
 # stdout의 인코딩을 UTF-8로 강제 변환한다
 sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
-import cgi
+import cgi, os
 form = cgi.FieldStorage()
+
+listStr=''
+
+rootdir='data'
+for file in os.listdir(rootdir):
+    d=os.path.join(rootdir, file)
+    if os.path.isdir(d):
+        item = d[5:]
+        listStr = listStr + '<li><a href="index.py?id={name}">{name}</a></li>'.format(name=item)
+
+
 if 'id' in form:
     pageId = form["id"].value
-    content=open('data/'+pageId,'r',encoding='utf-8').read()
+    content=open('data/'+pageId+'/'+pageId+'.txt','r',encoding='utf-8').read()
 else:
     pageId="Main"
-    content=open('data/Main','r',encoding='utf-8').read()
+    content=open('data/Main.txt','r',encoding='utf-8').read()
 
 print('''<!DOCTYPE html>
 <html>
@@ -28,9 +39,7 @@ print('''<!DOCTYPE html>
   <div class="index">
   <ol>
     <p>목차</p>
-    <li><a href="index.py?id=Html">HTML</a></li>
-    <li><a href="index.py?id=Python">Python</a></li>
-    <li><a href="index.py?id=Note">Note</a></li>
+      {listStr}
   </ol>
   </div>
   <div class="content">
@@ -43,4 +52,4 @@ print('''<!DOCTYPE html>
   
 </body>
 </html>
-'''.format(title=pageId, cont=content))
+'''.format(title=pageId, cont=content, listStr=listStr))
