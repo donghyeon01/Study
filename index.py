@@ -15,13 +15,19 @@ rootdir='data'
 for file in os.listdir(rootdir):
     d=os.path.join(rootdir, file)
     if os.path.isdir(d):
-        item = d[5:]
-        listStr = listStr + '<li><a href="index.py?id={name}">{name}</a></li>'.format(name=item)
+        
+        namesplit = d.split('\\')
+        if len(namesplit)>1:
+            name=namesplit[-1]
+        else:
+            name=d[5:]
+        page = d
+        listStr = listStr + '<li><a href="index.py?id={page}\{name}">{name}</a></li>'.format(name=name,page=page)
 
 
 if 'id' in form:
     pageId = form["id"].value
-    content=open('data/'+pageId+'/'+pageId+'.txt','r',encoding='utf-8').read()
+    content=open(pageId+'.txt','r',encoding='utf-8').read()
 else:
     pageId="Main"
     content=open('data/Main.txt','r',encoding='utf-8').read()
