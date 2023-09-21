@@ -26,23 +26,24 @@ if 'id' in form:
     idlen=len(idsp)
 
     if idlen==1:
-       idfile=os.path.join(rootdir,pageId)
-       if os.path.isdir(idfile):
+        idfile=os.path.join(rootdir,pageId)
+        if os.path.isdir(idfile):
           for file in os.listdir(idfile):
-             content=content+'<li><a href="index.py?id=">{c}</a></li>'
-        
-    dir_id='data\\'+pageId
-    for file in os.listdir(dir_id):
-        f=os.path.join(dir_id,f)
-        if os.path.isdir(f):
-          content='<li><a href="index.py?id=Python-Operator연산자">연산자 정리</a></li>'
+             name=file.split('-')[1]
+             content=content+'<li><a href="index.py?id={subindex}">{name}</a></li>'.format(subindex=file,name=name.split('.')[0])
+             title=pageId.split('.')[0]
         else:
-          content=open(pageId+'.txt','r',encoding='utf-8').read()
+           content=open(rootdir+'/'+pageId,'r',encoding='utf-8').read()
+           title=pageId.split('.')[0]
+    elif idlen==2:
+       content=open(rootdir+'/'+idsp[0]+'/'+pageId,'r',encoding='utf-8').read()
+       title=pageId.split('.')[0]
 
 
 else: 
     pageId="Main"
     content=open('data/Main.txt','r',encoding='utf-8').read()
+    title='Main'
 
 print('''<!DOCTYPE html>
 <html>
@@ -70,4 +71,4 @@ print('''<!DOCTYPE html>
   
 </body>
 </html>
-'''.format(title=pageId, cont=content, listStr=listStr))
+'''.format(title=title, cont=content, listStr=listStr))

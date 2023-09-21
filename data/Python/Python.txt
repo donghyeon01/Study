@@ -1,2 +1,0 @@
-<li><a href="index.py?id=Python-Operator연산자">연산자 정리</a></li>
-<li><a href="index.py?id=String">문자열 정리</a></li>
