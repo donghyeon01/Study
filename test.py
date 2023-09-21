@@ -24,6 +24,7 @@ for file in os.listdir(rootdir):
 print('---')
 print(dlist)
 '''
+'''     
 for file in os.listdir(rootdir):
     d=os.path.join(rootdir, file)
     if os.path.isdir(d):
@@ -31,5 +32,13 @@ for file in os.listdir(rootdir):
         dsplit=dlist.split('\\')
         print(len(dsplit))
         print(dsplit[-1])
-print('---')
-print(dlist)
+    else:
+        filename=d
+        print('not dir--'+filename)
+'''
+
+for file in os.listdir(rootdir):
+    dr=os.path.join(rootdir,"Python")
+    
+    print(file)
+
