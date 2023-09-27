@@ -1,7 +1,7 @@
 #!python
 print("Content-Type: text/html")
 print()
-import sys,codecs,cgi, os, view
+import sys,codecs,cgi, os, module.view as view
 
 # stdout의 인코딩을 UTF-8로 강제 변환한다
 sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
